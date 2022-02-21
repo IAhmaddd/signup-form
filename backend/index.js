@@ -8,16 +8,9 @@ const connectToDb = require('./db/connectDb');
 connectToDb();
 
 const server = new ApolloServer({
-	// set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
-	cors: {
-		origin: '*',
-		credentials: true,
-	},
 	typeDefs,
 	resolvers,
 });
-
-
 
 
 server.listen().then(({ url }) => {

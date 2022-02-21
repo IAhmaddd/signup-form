@@ -6,6 +6,8 @@ import { formInputs } from "../JSON/formInputs";
   import {toast } from 'react-toastify';
 
 const UserRegisterForm = () => {
+	const [createUser, { data, loading, error }] = useMutation<any>(CREATE_USER);
+
 	const [formData, setFormData] = React.useState<any>({
 		firstName: '',
 		lastName: '',
@@ -14,9 +16,6 @@ const UserRegisterForm = () => {
 		password: '',
 		confirmPassword: '',
 	});
-
-
-	const [createUser, { data, loading, error }] = useMutation<any>(CREATE_USER);
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
@@ -29,14 +28,15 @@ const UserRegisterForm = () => {
 			return;
 		}
 
-		// create a duplicate of formData
 		const formDataCopy = { ...formData };
 		delete formDataCopy.confirmPassword;
+
 		createUser({
 			variables: {
 				user: formDataCopy,
 			},
 		});
+		
 	};
 
 	React.useEffect(() => {

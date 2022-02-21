@@ -1,4 +1,3 @@
-// create signup resolver for mutation
 const userResolver = require("./resolvers/user.resolver");
 
 const resolvers = {
