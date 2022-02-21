@@ -9,8 +9,9 @@ connectToDb();
 
 const server = new ApolloServer({
 	// set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
-	requestOptions: {
-		mode: 'cors',
+	cors: {
+		origin: '*',
+		credentials: true,
 	},
 	typeDefs,
 	resolvers,
