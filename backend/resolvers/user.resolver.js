@@ -23,6 +23,7 @@ const userResolver = {
 
 	Mutation: {
 		createUser: async (_, { user }) => {
+			console.log('user', user);
 			try {
 				const newUser = new User(user);
 				const savedUser = await newUser.save();

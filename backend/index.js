@@ -7,7 +7,17 @@ const connectToDb = require('./db/connectDb');
 
 connectToDb();
 
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({
+	// set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
+	requestOptions: {
+		mode: 'cors',
+	},
+	typeDefs,
+	resolvers,
+});
+
+
+
 
 server.listen().then(({ url }) => {
 	console.log(`YOUR API IS RUNNING AT: ${url} :)`);
